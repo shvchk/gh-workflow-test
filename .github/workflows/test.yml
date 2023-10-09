@@ -10,4 +10,5 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello world
+      - name: echo
+        run: echo hello world

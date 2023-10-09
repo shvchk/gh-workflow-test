@@ -1,4 +1,4 @@
-name: CAPITAALIZED
+name: CO
 
 on:
   workflow_dispatch:

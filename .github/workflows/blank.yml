@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - run: '[[ -f custom.sh ]] && . custom.sh'
-    - run: '[[ -f custom2.sh ]] && . custom2.sh'
+    - run: '[[ -f custom.sh ]] && . custom.sh || :'
+    - run: '[[ -f custom2.sh ]] && . custom2.sh || :'
 
     - run: echo "LANG = $LANG | LC_ALL = $LC_ALL"
 

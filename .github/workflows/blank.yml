@@ -14,13 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    #- run: |
-    #    while read -r line || [[ -n "$line" ]]; do
-    #      echo "$line" >> $GITHUB_ENV
-    #    done < <(cat variables <(grep '^CONFIG_' build.config))
+    - run: |
+        while read -r line || [[ -n "$line" ]]; do
+          echo $line >> $GITHUB_ENV
+        done < <(cat variables <(grep '^CONFIG_' build.config))
 
     - run: |
-        . <(cat variables <(grep '^CONFIG_' build.config))
         echo "$VAR3"
         echo "$VAR4"
         echo "$CONFIG_VENDOR"

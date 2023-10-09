@@ -36,7 +36,7 @@ jobs:
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ env.BUILD_TIMESTAMP }}-${{ env.VAR8 }}-${{ env.VAR9 }}
+        tag_name: ${{ env.BUILD_TIMESTAMP }}
         files: |
           d
           /x

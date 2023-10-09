@@ -1,1 +1,2 @@
 VAR3=omg
+VAR4=${VAR3}/omg

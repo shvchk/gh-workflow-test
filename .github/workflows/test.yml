@@ -2,6 +2,9 @@ name: wtf
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '*'
 
 jobs:
   job1:

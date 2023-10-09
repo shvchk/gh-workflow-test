@@ -17,8 +17,13 @@ jobs:
     - run: |
         while read -r line || [[ -n "$line" ]]; do
           echo "$line" >> $GITHUB_ENV
-        done <<(cat variables build.config)
+        done < variables
     
+    - run: |
+        while read -r line || [[ -n "$line" ]]; do
+          echo "$line" >> $GITHUB_ENV
+        done < build.config
+
     - run: |
         echo "$VAR3"
         echo "$VAR4"

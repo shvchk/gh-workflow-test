@@ -17,16 +17,23 @@ jobs:
     - run: |
         while read -r line || [[ -n "$line" ]]; do
           echo "$line" >> $GITHUB_ENV
-        done < variables
+        done <<(cat variables build.config)
     
     - run: |
         echo "$VAR3"
         echo "$VAR4"
+        echo "$CONFIG_VENDOR"
+        echo "$CONFIG_FIRMWARE_PRODUCT_ID"
         mkdir x
         cd $_
         date > d
 
     - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d-%H.%M.%S')" >> $GITHUB_ENV
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
 
     - name: Upload Release
       uses: softprops/action-gh-release@v1

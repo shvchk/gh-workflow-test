@@ -7,7 +7,7 @@ on:
       - '*'
 
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: echo

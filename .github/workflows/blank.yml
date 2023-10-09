@@ -15,7 +15,8 @@ jobs:
     - uses: actions/checkout@v4
 
     - run: |
-        cat variables build.config >> $GITHUB_ENV
+        grep '^CONFIG_' build.config >> $GITHUB_ENV
+        grep '^VAR' variables >> $GITHUB_ENV
 
     - run: |
         echo "$VAR3"

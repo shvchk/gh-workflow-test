@@ -35,11 +35,16 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}
-        path: |
-          x/d
-          build.config
+        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_firmware
+        path: x/d
         retention-days: 5
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_config
+        path: build.config
+        retention-days: 5
+
 
     #- name: Upload Release
     #  uses: softprops/action-gh-release@v1

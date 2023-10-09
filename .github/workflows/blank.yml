@@ -32,13 +32,16 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
-        path: path/to/artifact/world.txt
-
-    - name: Upload Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ env.BUILD_TIMESTAMP }}
-        files: |
+        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}
+        path: |
           x/d
+          build.config
+        retention-days: 5
+
+    #- name: Upload Release
+    #  uses: softprops/action-gh-release@v1
+    #  with:
+    #    tag_name: ${{ env.BUILD_TIMESTAMP }}
+    #    files: |
+    #      x/d
 

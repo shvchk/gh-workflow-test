@@ -15,8 +15,16 @@ jobs:
     - uses: actions/checkout@v4
 
     - run: |
-        grep '^CONFIG_' build.config >> $GITHUB_ENV
-        grep '^VAR' variables >> $GITHUB_ENV
+        . <(cat variables build.config)
+
+        for v in "${!PADAVAN_@}"; do
+          echo "$v=${!v}"
+        done
+
+        for v in "${!CONFIG_@}"; do
+          echo "$v=${!v}"
+        done
+
 
     - run: |
         echo "$VAR3"

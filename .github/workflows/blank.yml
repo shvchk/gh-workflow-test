@@ -17,7 +17,7 @@ jobs:
     - run: |
         . <(cat variables build.config)
 
-        for v in "${!PADAVAN_@}"; do
+        for v in "${!VAR@}"; do
           echo "$v=${!v}" >> $GITHUB_ENV
         done
 

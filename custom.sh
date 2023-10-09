@@ -1,1 +1,1 @@
-VAR3=omg
+export VAR3=omg

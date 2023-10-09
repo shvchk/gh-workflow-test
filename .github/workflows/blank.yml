@@ -3,13 +3,16 @@ name: test
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       DEBIAN_FRONTEND: noninteractive
       VAR1: test
-      VAR2: $VAR-lol
+      VAR2: ${VAR1}-lol
     steps:
     - uses: actions/checkout@v4
 
@@ -30,9 +33,16 @@ jobs:
 
     - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
 
+    - run: pwd
+
+    - run: free -mtw
+
+    - run: cat /proc/cpuinfo
+
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ env.BUILD_TIMESTAMP }}-${{ env.VAR8 }}-${{ env.VAR9 }}
         files: |
-          /x
+          x
+          d

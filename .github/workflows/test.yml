@@ -1,4 +1,4 @@
-name: test
+name: wtf
 
 on:
   workflow_dispatch:
@@ -6,11 +6,5 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    env:
-      DEBIAN_FRONTEND: noninteractive
-      VAR1: test
-      VAR2: lol
     steps:
-    - uses: actions/checkout@v4
-
     - run: echo hello world

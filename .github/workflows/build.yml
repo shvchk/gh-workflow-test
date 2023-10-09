@@ -2,9 +2,6 @@ name: test
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - '*'
 
 jobs:
   job1:
@@ -16,27 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - run: '[[ -f custom.sh ]] && . custom.sh'
-    - run: '[[ -f custom2.sh ]] && . custom2.sh'
-
-    - run: echo "LANG = $LANG | LC_ALL = $LC_ALL"
-
-    - run: |
-        VAR8=kek
-        export VAR9=lol
-    
-    - run: |
-        echo "$VAR1 $VAR2 $VAR3 $VAR8 $VAR9"
-        mkdir x
-        cd $_
-        date > d
-
-    - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
-
-    - name: Upload Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ env.BUILD_TIMESTAMP }}
-        files: |
-          d
-          /x
+    - run: echo hello world

@@ -3,9 +3,6 @@ name: test
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,20 +27,19 @@ jobs:
         mkdir x
         cd $_
         date > d
+        date > oi.lol
 
-    - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d-%H.%M.%S')" >> $GITHUB_ENV
+    - run: cp x/d kek.lol
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_firmware
-        path: x/d
-        retention-days: 5
+    - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
 
     - uses: actions/upload-artifact@v3
       with:
-        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_config
-        path: build.config
+        name: PADAVAN_${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_${{ env.BUILD_TIMESTAMP }}
         retention-days: 5
+        path: |
+          *lol
+          build.config
 
 
     #- name: Upload Release

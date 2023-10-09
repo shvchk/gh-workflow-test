@@ -2,9 +2,12 @@ name: test
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '*'
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
     env:
       DEBIAN_FRONTEND: noninteractive
@@ -35,4 +38,5 @@ jobs:
       with:
         tag_name: ${{ env.BUILD_TIMESTAMP }}-${{ env.VAR8 }}-${{ env.VAR9 }}
         files: |
+          d
           /x

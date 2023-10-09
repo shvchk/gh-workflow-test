@@ -1,4 +1,4 @@
-name: wtf
+name: CAPITAALIZED
 
 on:
   workflow_dispatch:

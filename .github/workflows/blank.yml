@@ -33,13 +33,13 @@ jobs:
 
     - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d-%H.%M.%S')" >> $GITHUB_ENV
 
-    #- uses: actions/upload-artifact@v3
-    #  with:
-    #    name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}
-    #    path: |
-    #      x/d
-    #      build.config
-    #    retention-days: 5
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}
+        path: |
+          x/d
+          build.config
+        retention-days: 5
 
     #- name: Upload Release
     #  uses: softprops/action-gh-release@v1

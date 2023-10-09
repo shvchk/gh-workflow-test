@@ -15,9 +15,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - run: |
-        while read -r line || [[ -n "$line" ]]; do
-          echo $line >> $GITHUB_ENV
-        done < <(cat variables <(grep '^CONFIG_' build.config))
+        cat variables build.config >> $GITHUB_ENV
 
     - run: |
         echo "$VAR3"

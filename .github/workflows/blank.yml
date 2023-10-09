@@ -9,7 +9,7 @@ jobs:
     env:
       DEBIAN_FRONTEND: noninteractive
       VAR1: test
-      VAR2: ${{ env.VAR1 }}-lol
+      VAR2: $VAR-lol
     steps:
     - uses: actions/checkout@v4
 

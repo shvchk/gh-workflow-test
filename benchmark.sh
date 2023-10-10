@@ -23,7 +23,7 @@ _run_tests() {
     _install_pkgs $booster
     echo ${booster:-regular}: $(( $(date +%s) - t0 )) s | tee -a "$results"
     _clean_pkgs
-    sync; sysctl -q vm.drop_caches=3
+    #sync; sysctl -q vm.drop_caches=3
   done
   echo Total ${booster:-regular}: $(( $(date +%s) - T0 )) s | tee -a "$results"
 }
@@ -31,7 +31,7 @@ _run_tests() {
 sudo apt update
 _clean_pkgs
 sudo apt install --download-only -y "${DEPS[@]}"
-sync; sysctl -q vm.drop_caches=3
+#sync; sysctl -q vm.drop_caches=3
 
 _run_tests
 _run_tests eatmydata

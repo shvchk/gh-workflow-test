@@ -1,0 +1,24 @@
+regular: 0 s
+regular: 0 s
+regular: 0 s
+regular: 0 s
+regular: 0 s
+Total regular: 1 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+Total eatmydata: 0 s
+regular: 31 s
+regular: 56 s
+regular: 0 s
+regular: 0 s
+regular: 0 s
+Total regular: 102 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+eatmydata: 0 s
+Total eatmydata: 2 s

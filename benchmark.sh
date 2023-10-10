@@ -3,17 +3,17 @@
 export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
-#DEPS=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
+#_dependencies=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
 _dependencies=(devscripts)
 
 _clean_pkgs() {
-  sudo apt purge -y "${DEPS[@]}"
+  sudo apt purge -y "${_dependencies[@]}"
   sudo apt autoremove --purge -y
 }
 
 _install_pkgs() {
   booster=${1:-}
-  sudo $booster apt install -y "${DEPS[@]}"
+  sudo $booster apt install -y "${_dependencies[@]}"
 }
 
 _run_tests() {
@@ -34,7 +34,7 @@ echo 'Binary::apt::APT::Keep-Downloaded-Packages "1";' | sudo tee /etc/apt/apt.c
 
 sudo apt update
 _clean_pkgs
-sudo apt install --download-only -y "${DEPS[@]}"
+sudo apt install --download-only -y "${_dependencies[@]}"
 #sync; sysctl -q vm.drop_caches=3
 
 _run_tests ""

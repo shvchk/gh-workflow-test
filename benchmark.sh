@@ -66,7 +66,7 @@ _run_tests() {
     _install_pkgs $booster
     echo ${booster:-regular}: $(( $(date +%s) - t0 )) s | tee -a "$results"
     _clean_pkgs
-    sync; sysctl -q vm.drop_caches=3
+    sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
   done
   echo Total ${booster:-regular}: $(( $(date +%s) - T0 )) s | tee -a "$results"
 }
@@ -77,7 +77,7 @@ echo 'Binary::apt::APT::Keep-Downloaded-Packages "1";' | sudo tee /etc/apt/apt.c
 sudo apt update -qqq
 _clean_pkgs
 sudo apt install --download-only -qqqy "${_dependencies[@]}"
-sync; sysctl -q vm.drop_caches=3
+sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
 rm -f "$results" ||:
 
 _run_tests ""

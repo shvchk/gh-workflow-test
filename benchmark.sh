@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
 #DEPS=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
-DEPS=(build-essential ca-certificates devscripts)
+_dependencies=(devscripts)
 
 _clean_pkgs() {
   sudo apt purge -y "${DEPS[@]}"

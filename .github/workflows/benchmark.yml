@@ -10,9 +10,9 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        sudo eatmydata apt update
-        sudo eatmydata apt remove '~i ~nclang-tidy' -y
-        sudo eatmydata apt install --no-install-recommends -y \
+        sudo apt update
+        sudo apt remove '~i ~nclang-tidy' -y
+        sudo apt install --no-install-recommends -y \
                            autoconf \
                            autoconf-archive \
                            automake \

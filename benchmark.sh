@@ -84,7 +84,7 @@ rm -f "$results" ||:
 #_run_tests eatmydata
 
 
-bash -c 't0=$(date +%s); for i in {1..10000}; do touch sync-bench; sync; done; echo regular $(( $(date +%s) - t0 )) s' >> "$results"
-eatmydata bash -c 't0=$(date +%s); for i in {1..10000}; do touch sync-bench; sync; done; echo eatmydata $(( $(date +%s) - t0 )) s' >> "$results"
+bash -c 't0=$(date +%s); for i in {1..50000}; do touch sync-bench; sync; done; echo regular $(( $(date +%s) - t0 )) s' >> "$results"
+eatmydata bash -c 't0=$(date +%s); for i in {1..50000}; do touch sync-bench; sync; done; echo eatmydata $(( $(date +%s) - t0 )) s' >> "$results"
 
 cat "$results"

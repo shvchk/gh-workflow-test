@@ -4,7 +4,49 @@ export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
 #_dependencies=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
-_dependencies=(build-essential devscripts autoconf autoconf-archive automake bison cmake doxygen)
+_dependencies=(
+  autoconf
+  autoconf-archive
+  automake
+  autopoint
+  bison
+  build-essential
+  cmake
+  doxygen
+  fakeroot
+  flex
+  gettext
+  git
+  help2man
+  libblkid-dev
+  libc-ares-dev
+  libcurl4-openssl-dev
+  libdevmapper-dev
+  libev-dev
+  libevent-dev
+  libexif-dev
+  libflac-dev
+  libgmp3-dev
+  libid3tag0-dev
+  libjpeg-dev
+  libkeyutils-dev
+  libltdl-dev
+  libmpc-dev
+  libmpfr-dev
+  libncurses5-dev
+  libogg-dev
+  libsqlite3-dev
+  libssl-dev
+  libtool
+  libtool-bin
+  libudev-dev
+  libvorbis-dev
+  libxml2-dev
+  ppp-dev
+  texinfo
+  xxd
+  zstd
+)
 
 _clean_pkgs() {
   sudo eatmydata apt purge -qqqy "${_dependencies[@]}"

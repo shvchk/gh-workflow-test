@@ -7,13 +7,13 @@ results=results.txt
 _dependencies=(devscripts)
 
 _clean_pkgs() {
-  sudo apt purge -y "${_dependencies[@]}"
-  sudo apt autoremove --purge -y
+  sudo apt purge -qqqy "${_dependencies[@]}"
+  sudo apt autoremove --purge -qqqy
 }
 
 _install_pkgs() {
   booster=${1:-}
-  sudo $booster apt install -y "${_dependencies[@]}"
+  sudo $booster apt install -qqqy "${_dependencies[@]}"
 }
 
 _run_tests() {
@@ -32,9 +32,9 @@ _run_tests() {
 sudo mkdir -p /etc/apt/apt.conf.d
 echo 'Binary::apt::APT::Keep-Downloaded-Packages "1";' | sudo tee /etc/apt/apt.conf.d/10apt-keep-downloads
 
-sudo apt update
+sudo apt update -qqq
 _clean_pkgs
-sudo apt install --download-only -y "${_dependencies[@]}"
+sudo apt install --download-only -qqqy "${_dependencies[@]}"
 #sync; sysctl -q vm.drop_caches=3
 
 _run_tests ""

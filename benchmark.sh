@@ -3,7 +3,6 @@
 export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
-#_dependencies=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
 _dependencies=(
   autoconf
   autoconf-archive

@@ -4,11 +4,11 @@ export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
 #_dependencies=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
-_dependencies=(devscripts)
+_dependencies=(build-essential devscripts)
 
 _clean_pkgs() {
-  sudo apt purge -qqqy "${_dependencies[@]}"
-  sudo apt autoremove --purge -qqqy
+  sudo eatmydata apt purge -qqqy "${_dependencies[@]}"
+  sudo eatmydata apt autoremove --purge -qqqy
 }
 
 _install_pkgs() {
@@ -36,8 +36,9 @@ sudo apt update -qqq
 _clean_pkgs
 sudo apt install --download-only -qqqy "${_dependencies[@]}"
 #sync; sysctl -q vm.drop_caches=3
+rm -f "$results" ||:
 
 _run_tests ""
 _run_tests eatmydata
 
-cat $results
+cat "$results"

@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 results=results.txt
 #_dependencies=(build-essential ca-certificates devscripts autoconf autoconf-archive automake bison cmake doxygen)
-_dependencies=(build-essential devscripts)
+_dependencies=(build-essential devscripts autoconf autoconf-archive automake bison cmake doxygen)
 
 _clean_pkgs() {
   sudo eatmydata apt purge -qqqy "${_dependencies[@]}"
@@ -24,7 +24,7 @@ _run_tests() {
     _install_pkgs $booster
     echo ${booster:-regular}: $(( $(date +%s) - t0 )) s | tee -a "$results"
     _clean_pkgs
-    #sync; sysctl -q vm.drop_caches=3
+    sync; sysctl -q vm.drop_caches=3
   done
   echo Total ${booster:-regular}: $(( $(date +%s) - T0 )) s | tee -a "$results"
 }
@@ -35,7 +35,7 @@ echo 'Binary::apt::APT::Keep-Downloaded-Packages "1";' | sudo tee /etc/apt/apt.c
 sudo apt update -qqq
 _clean_pkgs
 sudo apt install --download-only -qqqy "${_dependencies[@]}"
-#sync; sysctl -q vm.drop_caches=3
+sync; sysctl -q vm.drop_caches=3
 rm -f "$results" ||:
 
 _run_tests ""

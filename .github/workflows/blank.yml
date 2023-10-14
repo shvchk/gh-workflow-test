@@ -17,6 +17,6 @@ jobs:
     - name: Run custom pre-build script
       run: |
         set -x
-        [[ -f pre-build.sh ]] && . pre-build.sh
+        [[ -f pre-build.sh ]] && . pre-build.sh || :
 
     - run: echo finish

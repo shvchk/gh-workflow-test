@@ -11,41 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - run: |
-        . <(cat variables build.config)
+    - run: set -x
+    - run: echo start
 
-        for v in "${!VAR@}" "${!CONFIG_@}"; do
-          echo "$v=${!v}" >> $GITHUB_ENV
-        done
+    - name: Run custom pre-build script
+      run: '[[ -f pre-build.sh ]] && . pre-build.sh'
 
-
-    - run: |
-        echo "$VAR3"
-        echo "$VAR4"
-        echo "$CONFIG_VENDOR"
-        echo "$CONFIG_FIRMWARE_PRODUCT_ID"
-        mkdir x
-        cd $_
-        date > d
-        date > oi.lol
-
-    - run: cp x/d kek.lol
-
-    - run: echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
-
-    - uses: actions/upload-artifact@v3
-      with:
-        name: PADAVAN_${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_${{ env.BUILD_TIMESTAMP }}
-        retention-days: 5
-        path: |
-          *lol
-          build.config
-
-
-    #- name: Upload Release
-    #  uses: softprops/action-gh-release@v1
-    #  with:
-    #    tag_name: ${{ env.BUILD_TIMESTAMP }}
-    #    files: |
-    #      x/d
-
+    - run: echo finish

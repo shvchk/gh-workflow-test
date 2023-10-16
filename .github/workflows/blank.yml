@@ -14,9 +14,19 @@ jobs:
     - run: set -x
     - run: echo start
 
-    - name: Run custom pre-build script
+    - name: Prepare artifacts
       run: |
-        set -x
-        [[ -f pre-build.sh ]] && . pre-build.sh || :
+        date > date.txt
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test
+        retention-days: 1
+        path: date.txt
+
+    - run: echo wow
+
+    - run: exit 1
 
     - run: echo finish

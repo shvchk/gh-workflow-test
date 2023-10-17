@@ -15,6 +15,21 @@ jobs:
     - run: echo start
 
     - run: |
+        PADAVAN_THEMES=(
+        #  blue
+        #  blue2
+        #  grey
+        #  grey2
+        #  white
+        #  yellow
+        )
+
+        if (( ${#PADAVAN_THEMES[@]} )); then
+
+          echo ${#PADAVAN_THEMES[@]}
+          echo "${PADAVAN_THEMES[@]}"
+
+        fi
         echo "TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
         echo $TIMESTAMP
 

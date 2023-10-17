@@ -9,7 +9,7 @@ jobs:
     env:
       DEBIAN_FRONTEND: noninteractive
     steps:
-    - uses: actions/checkout@v4
+#    - uses: actions/checkout@v4
 
     - run: set -x
     - run: echo start
@@ -18,4 +18,5 @@ jobs:
         echo "TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
         echo $TIMESTAMP
 
+    - run: echo $TIMESTAMP
     - run: echo finish

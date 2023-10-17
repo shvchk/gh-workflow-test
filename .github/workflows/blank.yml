@@ -14,19 +14,8 @@ jobs:
     - run: set -x
     - run: echo start
 
-    - name: Prepare artifacts
-      run: |
-        date > date.txt
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: test
-        retention-days: 1
-        path: date.txt
-
-    - run: echo wow
-
-    - run: exit 1
+    - run: |
+        echo "TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
+        echo $TIMESTAMP
 
     - run: echo finish

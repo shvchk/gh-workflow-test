@@ -24,6 +24,10 @@ jobs:
         #  yellow
         )
 
+        for v in "${!PADAVAN_@}" "${!CONFIG_@}"; do
+          echo "${!v}"
+        done
+
         if (( ${#PADAVAN_THEMES[@]} )); then
 
           echo ${#PADAVAN_THEMES[@]}
